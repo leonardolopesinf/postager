@@ -1,3 +1,2 @@
 # Postager
-
-## :electron: PostgreSQL GUI with Electron, React and TypeScript
+:electron: PostgreSQL GUI with Electron, React and TypeScript

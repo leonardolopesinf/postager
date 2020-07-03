@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-typescript",
+  "name": "postager",
   "version": "1.0.0",
-  "description": "An Electron boilerplate including TypeScript, React, Jest and ESLint.",
+  "description": "PostgreSQL GUI with Electron, React and TypeScript",
   "main": "./dist/main.js",
   "scripts": {
     "dev": "npm-run-all -p dev:react electron:serve",

@@ -14,5 +14,14 @@
     "outDir": "./dist",
     "strict": true ,
     "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      // server:
+      // client:
+      "@components/*": ["src/components/*"],
+      "@styled/*": ["src/styled/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+
   }
 }

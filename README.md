@@ -1,3 +1,3 @@
-## Electron + TypeScript
+# Postager
 
-> Remember to chage options in package.json
+## :electron: PostgreSQL GUI with Electron, React and TypeScript

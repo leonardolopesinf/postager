@@ -9,12 +9,14 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        font-family: Roboto, sans-serif;
         background-color: ${props => props.theme.colors.primary}
     }
 
-    label, a, img {
-        user-select: none;
+    strong, h1 {
+        -webkit-user-select: none;
     }
 
     button, a {

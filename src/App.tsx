@@ -39,6 +39,7 @@ const App = () => {
     <ThemeProvider theme={themes}>
       <Container>
         <Header />
+        <WindowsActions />
         <Content>
           <Sidebar />
           <Main />

@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as url from 'url'
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
 import ipc from './ipc'
+import events from './events'
 import store from './store'
 import storeKeys from '../keys/storeKeys'
 
@@ -33,6 +34,8 @@ function createWindow() {
   }
   
   ipc(mainWindow)
+
+  events(mainWindow)
 
   const { maximized: maximizedKey } = storeKeys;
 

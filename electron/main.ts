@@ -2,6 +2,9 @@ import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import * as url from 'url'
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
+import ipc from './ipc'
+import store from './store'
+import storeKeys from '../keys/storeKeys'
 
 let mainWindow: Electron.BrowserWindow | null
 
@@ -28,6 +31,14 @@ function createWindow() {
       })
     )
   }
+  
+  ipc(mainWindow)
+
+  const { maximized: maximizedKey } = storeKeys;
+
+  const maximized = store.get(maximizedKey);
+
+  maximized ? mainWindow.maximize() : mainWindow.unmaximize();
 
   mainWindow.on('closed', () => {
     mainWindow = null

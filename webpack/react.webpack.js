@@ -6,12 +6,7 @@ const rootPath = path.resolve(__dirname, '..')
 module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    mainFields: ['main', 'module', 'browser'],
-    alias:{
-      '@components': path.resolve(rootPath, 'src', 'components'),
-      '@styled': path.resolve(rootPath, 'src', 'styled'),
-      '@styles': path.resolve(rootPath, 'src', 'styles')
-    }
+    mainFields: ['main', 'module', 'browser']
   },
   entry: path.resolve(rootPath, 'src', 'App.tsx'),
   target: 'electron-renderer',

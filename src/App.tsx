@@ -2,14 +2,13 @@ import React from 'react'
 import { render } from 'react-dom'
 import styled, { ThemeProvider } from 'styled-components'
 
-import themes from '@styles/themes'
-import GlobalStyle from '@styles/global'
+import themes from './styles/themes'
+import GlobalStyle from './styles/global'
 
-import Header from '@components/Header'
-import Sidebar from '@components/Sidebar'
-import Main from '@components/Main'
-import Results from '@components/Results'
-import WindowsActions from '@components/WindowActions'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Main from './components/Main'
+import Results from './components/Results'
 
 const mainElement = document.createElement('div')
 mainElement.setAttribute('id', 'root')
@@ -23,7 +22,6 @@ const Container = styled.div`
     flex-direction: column;
 
     border: 1px solid ${props => props.theme.colors.border};
-    border-radius: 10px;
 `;
 
 const Content = styled.div`
@@ -39,7 +37,6 @@ const App = () => {
     <ThemeProvider theme={themes}>
       <Container>
         <Header />
-        <WindowsActions />
         <Content>
           <Sidebar />
           <Main />

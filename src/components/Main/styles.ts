@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import themes from "../../styles/themes";
 
 const Container = styled.div`
-    background-color: ${props => props.theme.colors.secondary};
+    background-color: ${themes.colors.secondary};
     flex: 1;
-    border-right: 1px solid ${props => props.theme.colors.border};
+    border-right: 1px solid ${themes.colors.border};
 `;
 
 export {

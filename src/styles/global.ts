@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import themes from './themes';
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -12,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         font-family: Roboto, sans-serif;
-        background-color: ${props => props.theme.colors.primary}
+        color: ${themes.colors.white};
+        background-color: ${themes.colors.primary};
     }
 
     strong, h1 {

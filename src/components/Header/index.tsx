@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Title } from "./styles";
+import WindowsActions from "../WindowsActions";
 
 const Header: React.FC = () => {
 
@@ -8,6 +9,7 @@ const Header: React.FC = () => {
             <Title>
                 Postager
             </Title>
+            <WindowsActions />
         </Container>
     )
 

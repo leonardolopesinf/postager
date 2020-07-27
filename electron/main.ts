@@ -41,7 +41,7 @@ function createWindow() {
 
   const maximized = store.get(maximizedKey);
 
-  maximized ? mainWindow.maximize() : mainWindow.unmaximize();
+  if(maximized) mainWindow.maximize();
 
   mainWindow.on('closed', () => {
     mainWindow = null

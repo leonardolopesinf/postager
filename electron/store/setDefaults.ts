@@ -1,5 +1,5 @@
 import Store from 'electron-store';
-import storeKeys from "../../keys/storeKeys";
+import storeKeys from "../../common/keys/storeKeys";
 import schema, { defaults } from "./schema";
 
 const setDefaults = (store: Store<schema>) => {

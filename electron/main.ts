@@ -5,7 +5,7 @@ import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electro
 import ipc from './ipc'
 import events from './events'
 import store from './store'
-import storeKeys from '../keys/storeKeys'
+import storeKeys from '../common/keys/storeKeys'
 
 let mainWindow: Electron.BrowserWindow | null
 

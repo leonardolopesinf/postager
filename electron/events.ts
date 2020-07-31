@@ -1,7 +1,7 @@
 import { BrowserWindow } from "electron";
 import store from "./store";
-import storeKeys from "../keys/storeKeys";
-import channels from "../keys/channels";
+import storeKeys from "../common/keys/storeKeys";
+import channels from "../common/keys/channels";
 
 const events = (window: BrowserWindow) => {
     const { maximized: maximizedKey } = storeKeys;

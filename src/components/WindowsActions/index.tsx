@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { FiMinus, FiSquare, FiX } from 'react-icons/fi';
 import { RiFileCopyLine } from 'react-icons/ri';
 import { Container, Action } from "./styles";
 import { remote, ipcRenderer as ipc } from "electron";
-import channels from "../../../keys/channels";
+import channels from "../../../common/keys/channels";
 
 const WindowsActions: React.FC = () => {
-
     const [maximized, setMaximized] = useState<boolean>(false);
-    
-    const { MAXIMIZED } = channels;
+
+    const { MAXIMIZED } = useMemo(() => channels, []);
 
     useEffect(() => {
+        const maximizedGet = (event: Electron.IpcRendererEvent, value: boolean) => setMaximized(value);
+
+        const maximizedSet = (event: Electron.IpcRendererEvent, value: boolean) => setMaximized(value);
+
+        ipc.once(MAXIMIZED.GET_DONE, maximizedGet);
+
+        ipc.on(MAXIMIZED.SET_DONE, maximizedSet);
+
         ipc.send(MAXIMIZED.GET);
-        
-        ipc.once(MAXIMIZED.GET_DONE, (event, args) => setMaximized(args));
 
-        ipc.on(MAXIMIZED.SET_DONE, (event, args) => setMaximized(args));
-    },[])
+        return () => ipc.removeListener(MAXIMIZED.SET_DONE, maximizedSet);
 
-    const minimizeHandler = () => {
+    }, [])
+
+    const minimizeHandler = useCallback(() => {
         const window = remote.getCurrentWindow();
 
         window.minimize();
-    }
+    }, [])
 
-    const maximizeHandler = () => {
+    const maximizeHandler = useCallback(() => {
         const window = remote.getCurrentWindow();
 
         setMaximized(true);
@@ -33,9 +39,9 @@ const WindowsActions: React.FC = () => {
         ipc.send(MAXIMIZED.SET, true);
 
         window.maximize();
-    }
+    }, [])
 
-    const unmaximizeHandler = () => {
+    const unmaximizeHandler = useCallback(() => {
         const window = remote.getCurrentWindow();
 
         setMaximized(false);
@@ -43,13 +49,13 @@ const WindowsActions: React.FC = () => {
         ipc.send(MAXIMIZED.SET, false);
 
         window.unmaximize();
-    }
+    }, [])
 
-    const closeHandler = () => {
+    const closeHandler = useCallback(() => {
         const window = remote.getCurrentWindow();
 
         window.close();
-    }
+    }, [])
 
     return (
         <Container>
@@ -57,7 +63,7 @@ const WindowsActions: React.FC = () => {
                 <FiMinus />
             </Action>
             <Action onClick={maximized ? unmaximizeHandler : maximizeHandler} data-testid="max-unmaximize">
-                {maximized ? <RiFileCopyLine data-testid="unmaximize" /> : <FiSquare data-testid="maximize"/>}
+                {maximized ? <RiFileCopyLine data-testid="unmaximize" /> : <FiSquare data-testid="maximize" />}
             </Action>
             <Action className="close" onClick={closeHandler} data-testid="close">
                 <FiX />
